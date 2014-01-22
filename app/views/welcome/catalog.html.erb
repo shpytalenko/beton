@@ -1,1 +1,13 @@
-Products list
+<% @products.each_slice(3) do |slice| %>
+  <div class="row-fluid">
+    <% slice.each do |product| %>
+      <div class="span4 well">
+        <h4 class="muted"><%= product.name %></h4>
+        <%= image_tag product.image(:medium) %>
+        <p class="muted"> <%= truncate( product.description, :length => 100) %></p>      
+        <span class="label label-info"><%= product.price %>  .руб</span>
+         <button class="btn btn-mini  btn-success pull-right" type="button">В Корзину</button>
+      </div>
+    <% end %>
+  </div>
+<% end %>

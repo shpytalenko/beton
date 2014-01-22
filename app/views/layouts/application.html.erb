@@ -81,7 +81,7 @@
           </div>
 
         </div>
-        <div class="row">
+        <div class="row" style="padding-top:100px;">
            <div class="span9">
               <%= yield %>
             </div>
@@ -90,6 +90,13 @@
                 <ul class="nav nav-list">
                   <% Category.all.each do |category| %>
                     <li><%= link_to "#{category.name} (#{(category.items ? category.items : 0) })", ""  %></li>
+                    <% if category.subcategories.size > 0 %>
+                      <ul>
+                        <% category.subcategories.each do |subcategory| %>
+                          <li><%= link_to "#{subcategory.name}", "" %> <li>
+                        <% end %>  
+                      </ul>
+                    <% end %>
                   <% end %>  
                 </ul>
               </div><!--/.well -->

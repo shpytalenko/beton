@@ -3,6 +3,11 @@ class WelcomeController < ApplicationController
   end
   
   def catalog
+    if params[:category_id].present? 
+      @products = Product.all
+    else
+      @products = Product.all
+    end
   end
   
   def portfolio
