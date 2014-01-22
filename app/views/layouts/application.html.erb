@@ -47,9 +47,12 @@
           <a class="brand" href="#">Газобетон</a>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Главная", "/path1"  %></li>
-              <li><%= link_to "Продукция", "/path2"  %></li>
-              <li><%= link_to "О Нас", "/path3"  %></li>
+              <li><%= link_to "Главная", "/"  %></li>
+              <li><%= link_to "Каталог", "/catalog"  %></li>
+              <li><%= link_to "Наши обьекты", "/portfolio"  %></li>
+              <li><%= link_to "Оплата и доставка", "/delivery"  %></li>
+              <li><%= link_to "Напишите нам", "/contact_us"  %></li>
+              <li><%= link_to "Контакты", "/about"  %></li>
             </ul>
             <form class="navbar-search pull-right">
               <input type="text" class="search-query" placeholder="Поиск">
@@ -62,17 +65,32 @@
     <div class="container">
       <div class="content">
         <div class="row">
+          <div class="span9">
+            <h2 class="muted"> Ильяся и Компания </h2>
+            <h4>Оптовые поставки строительных материалов</h4>
+          </div>
+          <div class="span3">
+            <address>
+              <span class="alert-error">
+              <strong>Ильяся Ебашит, Inc.</strong><br>
+              795 Folsom Ave, Suite 600<br>
+              San Francisco, CA 94107<br>
+              <abbr title="Phone">P:</abbr> (123) 456-7890
+            </address>
+            </span>
+          </div>
+
+        </div>
+        <div class="row">
            <div class="span9">
               <%= yield %>
             </div>
             <div class="span3">
               <div class="well sidebar-nav">
-                <h3>Товари</h3>
                 <ul class="nav nav-list">
-                  <li class="nav-header">Sidebar</li>
-                  <li><%= link_to "Газобетон", ""  %></li>
-                  <li><%= link_to "Кирпич", ""  %></li>
-                  <li><%= link_to "Арматура", ""  %></li>
+                  <% Category.all.each do |category| %>
+                    <li><%= link_to "#{category.name} (#{(category.items ? category.items : 0) })", ""  %></li>
+                  <% end %>  
                 </ul>
               </div><!--/.well -->
             </div><!--/span-->

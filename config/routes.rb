@@ -1,11 +1,18 @@
 Beton::Application.routes.draw do
  
+  resources :products
+
+  resources :categories
+
   root :to => 'welcome#main'
-  get "welcome/main"
+  
+  match 'catalog' => 'welcome#catalog'
+  match 'portfolio' => 'welcome#portfolio'
+  match 'delivery' => 'welcome#delivery'
+  match 'contact_us' => 'welcome#contact_us'
+  match 'about' => 'welcome#about'
 
-  get "welcome/about"
-
-  devise_for :users
+   devise_for :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
